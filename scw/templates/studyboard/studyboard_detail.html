@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-3">
+    <!-- 게시글 -->
+    <h2 class="border-bottom py-2"><div class="left-space">{{ studyboard.subject }}</div></h2>
+    <!-- flash 오류 --> 
+    {% for message in get_flashed_messages() %}
+    <main>
+        <div class="alert alert-danger" role="alert">
+        {{ message }}
+        </div>
+    </main>
+    {% endfor %}
+    <main>
+    <div class="card my-3">
+        <div class="card-body">
+            <div class="left-1" style="white-space: pre-line;" >{{ studyboard.content }}<hr></div>
+            <div class="d-flex justify-content-end">
+                {% if studyboard.modify_date %}
+                <div class="badge bg-light text-dark p-2 text-start mx-3">
+                    <div class="mb-2">modified at</div>
+                    <div>{{ studyboard.modify_date|datetime }}<hr></div>
+                </div>
+                {% endif %}
+                <div class="badge bg-light text-dark p-2 text-start">
+                    
+                    <div class="left-1">{{ studyboard.user.username }}<hr></div>
+                    
+                    <div class="left-1">{{ studyboard.create_date|datetime }}<hr></div>
+                </div>
+                <div class="left-1">
+                    {% if g.user == studyboard.user %}
+                    <a href="javascript:void(0)" data-uri="{{ url_for('studyboard.vote', studyboard_id=studyboard.id) }}"
+                        class="recommend btn btn-sm btn-outline-secondary"> <button>추천
+                    <span class="badge rounded-pill bg-success">{{ studyboard.voter|length }}</span></button>
+                    </a>
+                    <a href="{{ url_for('studyboard.modify', studyboard_id=studyboard.id) }}"
+                       class="btn btn-sm btn-outline-secondary">수정</a>
+                       <a href="javascript:void(0)" class="delete btn btn-sm btn-outline-secondary"
+                    data-uri="{{ url_for('studyboard.delete',studyboard_id=studyboard.id) }}">삭제</a>
+                    {% endif %}
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+    <!-- 댓글 목록 --> 
+    <h5 class="border-bottom my-3 py-2"><div class="left-1">{{ studyboard.sanswer_set|length }}개의 댓글이 있습니다.</div></h5>
+    {% for sanswer in studyboard.sanswer_set %}
+    <a id="sanswer_{{ sanswer.id }}"></a>
+    <main>
+    <div class="card my-3">
+        <div class="card-body">
+            <div class="left-1">
+                <td>{{ sanswer.user.username }}</td>
+                <hr>
+            </div>
+            <div class="card-text"><div class="left-1" style="white-space: pre-line;">{{ sanswer.content }}<hr></div></div>
+            <div class="d-flex justify-content-end">
+                {% if sanswer.modify_date %}
+                <div class="left-1">
+                    <div class="mb-2">수정 시각</div>
+                    <div>{{ sanswer.modify_date|datetime }}<hr></div>
+                </div>
+                {% endif %}
+                <div class="left-1">
+                    <div>{{ sanswer.create_date|datetime }}</div>
+                </div>
+            </div>
+            <div class="left-1">
+                {% if g.user == sanswer.user %}
+                <a href="{{ url_for('sanswer.modify', sanswer_id=sanswer.id) }}"
+                   class="btn btn-sm btn-outline-secondary">수정</a>
+                   <hr>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    </main>
+    {% endfor %}
+    <!-- 댓글 등록 -->
+    <form action="{{ url_for('sanswer.create', studyboard_id=studyboard.id) }}" method="post" class="my-3">
+        {{ form.csrf_token }}
+        <!-- 오류표시 Start -->
+        {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for field, errors in form.errors.items() %}
+            <strong>{{ form[field].label }}</strong>
+            <ul>
+                {% for error in errors %}
+                <main><li>{{ error }}</li></main>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <!-- 오류표시 End -->
+        <div class="left-1" >
+            <textarea {% if not g.user %}disabled{% endif %} 
+            name="content" id="content" class="form-control" rows="10"></textarea>
+        </div>
+        <input type="submit" value="답변등록" class="btn btn-primary">
+    </form>
+</div>
+{% endblock %}
+{% block script %}
+<script type='text/javascript'>
+const delete_elements = document.getElementsByClassName("delete");
+Array.from(delete_elements).forEach(function(element) {
+    element.addEventListener('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = this.dataset.uri;
+        };
+    });
+});
+const recommend_elements = document.getElementsByClassName("recommend");
+Array.from(recommend_elements).forEach(function(element) {
+    element.addEventListener('click', function() {
+        if(confirm("정말로 추천하시겠습니까?")) {
+            location.href = this.dataset.uri;
+        };
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>급식표</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f8e8f2;
+            color: #4a004e;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #a03a74;
+            color: white;
+            padding: 1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        header nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+        }
+
+        header nav a:hover {
+            background-color: #d04e9d;
+        }
+
+        main {
+            padding: 1em;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 2em;
+        }
+
+
+        h1, h2 {
+            color: #6a006d;
+        }
+
+        .timetable {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .timetable th, .timetable td {
+            border: 1px solid #d04e9d;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .timetable th {
+            background-color: #d04e9d;
+            color: white;
+            height: 5px;
+        }
+
+        .timetable td {
+            background-color: #ffffff;
+            height: 160px;
+        }
+
+        footer {
+            background-color: #a03a74;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .pagination{
+            text-align: center;
+        }
+        li {
+            margin: 0;
+            padding: 0;
+        }
+        .aling{
+            margin: 20px ;
+            padding: 20px ;
+        }
+        div {
+        text-align: start;
+        }
+        .left-1 { margin:5px 40px ;}  /* 마진 - 5px 40px 5px 40px */
+        .upad { margin:15px 10px;} /* 마진 - 15px 10px 15px 10px */
+        .left-space { margin:30px 40px ; }  /* 마진 - 30px 40px 30px 40px */
+    </style>
+</head>
+<body>
+    {% include "navbar.html" %}
+    <main>
+        <h2>급식표</h2>
+        <table class="timetable">
+            <thead>
+                <tr>
+                    <th>월</th>
+                    <th>화</th>
+                    <th>수</th>
+                    <th>목</th>
+                    <th>금</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 첫 번째 주 -->
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <!-- 두 번째 주 -->
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <!-- 세 번째 주 -->
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <!-- 네 번째 주 -->
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <!-- 다섯 번째 주 -->
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        &copy; 신철원고 에브리타임
+    </footer>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>신철원 고등학교 에브리타임</title>
+ <style>
+    .login {text-align: right;
+    color: black;}
+    h1{
+      color:black}
+     h1 {height:40px;
+      text-align: center;
+      
+}
+@font-face {
+    font-family: 'HancomMalangMalang-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2406-1@1.0/HancomMalangMalang-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+body{font-family:'HancomMalangMalang-Regular'}
+
+
+
+    .image{max-width: 100%;
+    	height: auto;
+    	margin: 0 auto;
+      text-align: center;
+    }
+    
+
+    
+    body{	background-image: url("{{ url_for('static', filename='background.png') }}");
+    	background-repeat: no-repeat;
+    	background-position: center center;
+    	background-size: 100% 230%;}
+
+    @media (max-width:600px){
+      body {background-image: url("{{ url_for('static', filename='background.png') }}");
+    	background-repeat: no-repeat;
+    	background-position: center center;
+    	background-size: 30% 100%;
+      }
+    }
+    
+  .register{text-align: center;
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Song+Myung&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+
+
+ button {
+  margin: 30px;
+  outline: none;
+ 
+}
+.custom-btn {
+  width: 150px;
+  height: 50px;
+  padding: 10px 25px;
+  border: 2px solid #000;
+  font-family: 'Lato', sans-serif;
+  font-weight: 800;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.custom-btn1 {
+  width: 100px;
+  height: 40px;
+  padding: 10px 25px;
+  border: 2px solid #000;
+  font-family: 'Lato', sans-serif;
+  font-weight: 800;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  
+}
+.btn-5 {
+  background: #000;
+  color: #fff;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  
+}
+.btn-5:hover {
+  background: transparent;
+  color: #000;
+   box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+}
+.btn-5:before,
+.btn-5:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #000;
+  transition:400ms ease all;
+  
+}
+.btn-5:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.btn-5:hover:before,
+.btn-5:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+.center{text-align: center;}
+
+ </style> 
+</head>
+<body>
+  <div class="image">
+    <img src="{{url_for('static',filename='scw.png')}}" alt="로고" width="10%">
+    </div>
+   <h1><strong>신철원고등학교 <span class="login">에브리타임</span></strong></h1>
+  
+  <div class="center">
+  <button class="custom-btn btn-5" onclick="location.href='/freeboard'" ><span>자유게시판</span></a></button>
+  <button class="custom-btn btn-5" onclick="location.href='/lunch'"><span>급식</span></button>
+  <button class="custom-btn btn-5" onclick="location.href='/studyboard'"><span>학업 게시판</span></button>
+  <button class="custom-btn btn-5" onclick="location.href='/potato'"><span>감자나라</span></button>
+  </div>
+  <div class="center">{% if g.user %}
+    <button class="custom-btn1 btn-5" >{{ g.user.username }}</button>
+    <br>
+        <button class="custom-btn1 btn-5"onclick="location.href='/auth/logout'">
+          <span>로그아웃 </span>
+        </button>
+    {% else %}
+    <button class="custom-btn1 btn-5" onclick="location.href='/auth/signup'" ><span>회원가입</span></a></button>
+    <button class="custom-btn1 btn-5" onclick="location.href='/auth/login'" ><span>로그인</span></a></button>
+    {% endif %}
+   </div>
+  
+</body>
+</html>

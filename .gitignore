@@ -1,0 +1,5 @@
+.idea
+scw.db
+*.pyc
+__pycache__
+migrations
