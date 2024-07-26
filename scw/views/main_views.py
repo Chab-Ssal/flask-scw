@@ -5,6 +5,7 @@ bp = Blueprint('main', __name__, url_prefix='/')
 
 
 @bp.route('/')
+3/0  # 강제로 오류발생
 def index():
     return render_template('mainpage.html')
 
