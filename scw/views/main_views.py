@@ -1,4 +1,4 @@
-from flask import Blueprint, url_for, render_template
+from flask import Blueprint, url_for, render_template, current_app
 from werkzeug.utils import redirect
 
 bp = Blueprint('main', __name__, url_prefix='/')
@@ -6,7 +6,7 @@ bp = Blueprint('main', __name__, url_prefix='/')
 
 @bp.route('/')
 def index():
-    3/0  # 강제로 오류발생
+    current_app.logger.info("INFO 레벨로 출력")
     return render_template('mainpage.html')
 
 @bp.route('/freeboard')
