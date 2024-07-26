@@ -36,7 +36,7 @@ def _list():
 @bp.route('/detail/<int:studyboard_id>/')
 def detail(studyboard_id):
     form = SanswerForm()
-    studyboard = studyboard.query.get_or_404(studyboard_id)
+    studyboard = Studyboard.query.get_or_404(studyboard_id)
     return render_template('studyboard/studyboard_detail.html', studyboard=studyboard, form=form) 
 
 @bp.route('/post/', methods=('GET', 'POST'))

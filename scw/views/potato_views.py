@@ -18,7 +18,7 @@ def _list():
     potato_list = Potato.query.order_by(Potato.create_date.desc())
     if kw:
         search = '%%{}%%'.format(kw)
-        sub_query = db.session.query(Panswer.Potato_id, Panswer.content, User.username) \
+        sub_query = db.session.query(Panswer.potato_id, Panswer.content, User.username) \
             .join(User, Panswer.user_id == User.id).subquery()
         potato_list = potato_list \
             .join(User) \
