@@ -50,7 +50,7 @@ def create():
         return redirect(url_for('potato._list'))
     return render_template('potato/potato_form.html', form=form)
 
-@bp.route('/modify/<int:fpotato_id>', methods=('GET', 'POST'))
+@bp.route('/modify/<int:potato_id>', methods=('GET', 'POST'))
 @login_required
 def modify(potato_id):
     potato = Potato.query.get_or_404(potato_id)

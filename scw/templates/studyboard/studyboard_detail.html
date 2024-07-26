@@ -29,11 +29,11 @@
                     <div class="left-1">{{ studyboard.create_date|datetime }}<hr></div>
                 </div>
                 <div class="left-1">
-                    {% if g.user == studyboard.user %}
                     <a href="javascript:void(0)" data-uri="{{ url_for('studyboard.vote', studyboard_id=studyboard.id) }}"
                         class="recommend btn btn-sm btn-outline-secondary"> <button>추천
-                    <span class="badge rounded-pill bg-success">{{ studyboard.voter|length }}</span></button>
+                            <span class="badge rounded-pill bg-success">{{ studyboard.voter|length }}</span></button>
                     </a>
+                    {% if g.user == studyboard.user %}
                     <a href="{{ url_for('studyboard.modify', studyboard_id=studyboard.id) }}"
                        class="btn btn-sm btn-outline-secondary">수정</a>
                        <a href="javascript:void(0)" class="delete btn btn-sm btn-outline-secondary"
