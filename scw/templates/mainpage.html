@@ -32,15 +32,16 @@ body{font-family:'HancomMalangMalang-Regular'}
 
     
     body{	background-image: url("{{ url_for('static', filename='background.png') }}");
+    height: 100vh;;
     	background-repeat: no-repeat;
     	background-position: center center;
-    	background-size: 100% 230%;}
+    	background-size: cover;}
 
     @media (max-width:600px){
       body {background-image: url("{{ url_for('static', filename='background.png') }}");
     	background-repeat: no-repeat;
     	background-position: center center;
-    	background-size: 30% 100%;
+    	background-size: cover;
       }
     }
     
