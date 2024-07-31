@@ -42,7 +42,7 @@
                 <td>{{ studyboard.user.username }}</td>
                 <th>{{ studyboard.create_date|datetime }}</th>
                 {% if studyboard.sanswer_set|length > 0 %}
-                <th>-댓글 s{{ studyboard.sanswer_set|length }}</th>
+                <th>-댓글 {{ studyboard.sanswer_set|length }}</th>
                 {% endif %}
             </th>
             </th>
