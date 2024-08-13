@@ -42,7 +42,7 @@
                 <td>{{ potato.user.username }}</td>
                 <th>{{ potato.create_date|datetime }}</th>
                 {% if potato.answer_set|length > 0 %}
-                <th>-댓글 {{ potato.answer_set|length }}</th>
+                <th>-댓글 {{ potato.panswer_set|length }}</th>
                 {% endif %}
             </th>
             </th>
