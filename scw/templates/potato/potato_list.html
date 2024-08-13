@@ -41,7 +41,7 @@
                 <a href="{{ url_for('potato.detail', potato_id=potato.id) }}">{{ potato.subject }}</a>
                 <td>{{ potato.user.username }}</td>
                 <th>{{ potato.create_date|datetime }}</th>
-                {% if potato.answer_set|length > 0 %}
+                {% if potato.panswer_set|length > 0 %}
                 <th>-댓글 {{ potato.panswer_set|length }}</th>
                 {% endif %}
             </th>
